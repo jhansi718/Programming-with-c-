@@ -1,0 +1,225 @@
+
+Develop a C++ program that models a Bank Account using a class. The class include data members account number, name, balance and member functions  deposit, withdraw, display balance.
+
+
+Program:
+
+#include <iostream>
+class BankAccount {
+private:
+    int accountNumber;
+    string name;
+    float balance;
+public:
+    void createAccount() {
+        cout << "Enter Account Number: ";
+        cin >> accountNumber;
+        cin.ignore();
+        cout << "Enter Account Holder Name: ";
+        getline(cin, name);
+        cout << "Enter Initial Balance: ₹";
+        cin >> balance;
+        cout << "\nAccount Created Successfully!\n";
+    }
+    
+
+void deposit() {
+        float amount;
+        cout << "Enter amount to deposit: ₹";
+        cin >> amount;
+        if (amount > 0) {
+            balance += amount;
+            cout << "₹" << amount << " deposited successfully.\n";
+        } else {
+            cout << "Invalid deposit amount.\n";
+        }
+    }
+    void withdraw() {
+        float amount;
+        cout << "Enter amount to withdraw: ₹";
+        cin >> amount;
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            cout << "₹" << amount << " withdrawn successfully.\n";
+        } else {
+            cout << "Insufficient balance or invalid amount.\n";
+        }
+    }
+    void displayBalance() const {
+        cout << "\n--- Account Details ---\n";
+        cout << "Account Number   : " << accountNumber << endl;
+        cout << "Account Holder   : " << name << endl;
+        cout << "Current Balance  : ₹" << balance << endl;
+    }
+};
+
+
+
+int main() {
+BankAccount myAccount;
+int choice;
+    myAccount.createAccount();
+    do {
+        cout << "\n--- Bank Menu ---\n";
+        cout << "1. Deposit\n";
+        cout << "2. Withdraw\n";
+        cout << "3. Display Balance\n";
+        cout << "4. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+        switch (choice) {
+            case 1:
+                myAccount.deposit();
+                break;
+            case 2:
+                myAccount.withdraw();
+                break;
+            case 3:
+                myAccount.displayBalance();
+                break;
+            case 4:
+                cout << "Thank you for using our banking system.\n";
+                break;
+            default:
+                cout << "Invalid choice. Please try again.\n";
+        }
+    } while (choice != 4);
+ 
+    
+
+return 0;
+}
+
+
+
+
+
+
+
+
+
+Program :
+Create a C++ program that illustrates the difference between the public and private access specifiers.
+Program:
+#include <iostream>
+#include <string>
+using namespace std;
+class Student {
+private:
+    
+
+string sudentName;
+    int rollNumber;
+    float marks;
+public:
+    string college;
+  
+  void setDetails() {
+        cout << "Enter student name: ";
+        cin.ignore();
+        getline(cin, studentName);
+        cout << "Enter roll number: ";
+        cin >> rollNumber;
+        cout << "Enter marks (out of 100): ";
+        cin >> marks;
+    }
+    void displayDetails() {
+        cout << "\n--- Student Details ---\n";
+        cout << "Name       : " << studentName << endl;
+        cout << "Roll No    : " << rollNumber << endl;
+        cout << "Marks      : " << marks << endl;
+        cout << "College    : " << college << endl;
+    }
+};
+ 
+int main() {
+    Student s1;
+    
+cout << "Enter college name: ";
+    getline(cin, s1.college);
+    s1.setDetails();
+    
+
+s1.displayDetails();
+    s1.college = "Aditya University";
+    cout << "\nUpdated College Name: " << s1.college << endl;
+    return 0;
+}
+
+
+
+
+Program :
+Develop a C++ program that uses the this pointer to refer to the current object.
+
+
+
+
+Program:
+#include <iostream>
+#include <string>
+using namespace std;
+class Student {
+private:
+    string name;
+    int rollNumber;
+    float marks;
+public:
+    Student() {
+        name = "";
+        
+
+        rollNumber = 0;
+        marks = 0.0;
+    }
+    void setDetails(string name, int rollNumber, float marks) {
+        this->name = name;
+        this->rollNumber = rollNumber;
+        this->marks = marks
+  }
+    
+Student& updateName(string name) {
+        this->name = name;
+        return *this;
+    }
+    Student& updateMarks(float marks) {
+        this->marks = marks;
+        return *this;
+    }
+    void display() {
+        cout << "\n--- Student Record ---\n";
+        cout << "Name       : " << name << endl;
+        cout << "Roll No.   : " << rollNumber << endl;
+        cout << "Marks      : " << marks << "/100\n";
+    }
+};
+int main() {
+    Student s1;
+    string n;
+    int r;
+    float m;
+    cout << "Enter Student Name: ";
+    getline(cin, n);
+    cout << "Enter Roll Number: ";
+    cin >> r;
+    cout << "Enter Marks (out of 100): ";
+    cin >> m;
+    s1.setDetails(n, r, m);
+    s1.display();
+    string updatedName;
+    float updatedMarks;
+    cout << "\nUpdate Name: ";
+    cin.ignore();
+    getline(cin, updatedName);
+    cout << "Update Marks: ";
+    cin >> updatedMarks;
+    s1.updateName(updatedName).updateMarks(updatedMarks);
+    s1.display();
+    return 0;
+}
+
+
+
+
+
+
