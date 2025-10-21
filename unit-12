@@ -1,0 +1,136 @@
+
+Program No :  
+ Develop a C++ program to implement and demonstrate List and Vector containers and 
+perform basic operations such as insertion, deletion, and traversal. 
+Program : 
+#include <iostream> 
+#include <vector> 
+#include <list> 
+#include <algorithm> 
+using namespace std; 
+int main() { 
+    cout << "=== VECTOR OPERATIONS ===" << endl; 
+                          
+    vector<char> v = {'a', 'f', 'd'}; 
+    v.push_back('z');                 
+    v.insert(v.begin() + 1, 'c');     
+    cout << "After insertion: "; 
+    for (int i = 0; i < v.size(); i++) 
+        cout << v[i] << " "; 
+    cout << endl; 
+    v.pop_back();                     
+    v.erase(find(v.begin(), v.end(), 'f'));   
+    cout << "After deletion: "; 
+    for (int i = 0; i < v.size(); i++) 
+        cout << v[i] << " "; 
+    cout << endl;     
+    cout << "Traversing vector: "; 
+    for (int i = 0; i < v.size(); i++) 
+        cout << v[i] << " "; 
+    cout << endl << endl; 
+    cout << "=== LIST OPERATIONS ===" << endl; 
+    list<int> l = {3, 2};     
+    l.push_back(5);                   
+    l.push_front(1);                  
+    auto it = l.begin(); 
+    advance(it, 2); 
+    l.insert(it, 4);                  
+    cout << "After insertion: "; 
+    for (auto i : l) 
+        cout << i << " "; 
+    cout << endl; 
+    cout << "Traversing list: "; 
+    for (auto it = l.begin(); it != l.end(); ++it) 
+                         
+        cout << *it << " "; 
+    cout << endl; 
+    l.pop_back();                    
+    l.pop_front();                    
+    it = l.begin(); 
+    advance(it, 2);                   
+    if (it != l.end()) 
+        l.erase(it); 
+    cout << "After deletion: "; 
+    for (auto i : l) 
+        cout << i << " "; 
+    cout << endl; 
+    return 0; 
+} 
+   
+ 
+ 
+   
+Program No :  
+ To implement a Deque (Double Ended Queue) in C++ and demonstrate basic operations 
+such as insertion, deletion, accessing, and traversal using the STL deque container.
+Program : 
+#include <iostream> 
+#include <deque> 
+using namespace std; 
+int main() { 
+    deque<int> dq; 
+    dq.push_back(10);    
+    dq.push_back(20); 
+    dq.push_front(5);   
+    dq.push_front(2); 
+    cout << "Deque after insertion: "; 
+    for (int i : dq)                 
+        cout << i << " "; 
+    cout << endl; 
+    cout << "Front element: " << dq.front() << endl; 
+    cout << "Back element: " << dq.back() << endl; 
+    dq.pop_front();   
+    dq.pop_back();    
+    cout << "Deque after deletion: "; 
+    for (int i : dq) 
+        cout << i << " "; 
+    cout << endl;    
+    auto it = dq.begin(); 
+    advance(it, 1);    
+    dq.insert(it, 15); 
+    cout << "After inserting 15 at 2nd position: "; 
+    for (int i : dq) 
+        cout << i << " "; 
+    cout << endl; 
+    cout << "Size of deque: " << dq.size() << endl; 
+    dq.clear(); 
+    cout << "Deque cleared. Is empty? " << (dq.empty() ? "Yes" : "No") << endl; 
+    return 0;  } 
+
+
+
+
+
+
+Program No :  
+ To implement a Map in C++ and demonstrate basic operations such as insertion, 
+deletion, accessing, and searching using the STL map container. 
+Program : 
+#include <iostream> 
+#include <map> 
+using namespace std; 
+int main() { 
+    map<int, string> m; 
+    m.insert({1, "Geeks"}); 
+    m.insert({2, "For"}); 
+    m.insert({3, "Geeks"}); 
+    cout << "Map after insertion:" << endl; 
+    for (auto i : m)        
+ cout << i.first << " " << i.second << endl; 
+    cout << "\nAccessing elements:" << endl; 
+    cout << "m[1] = " << m[1] << endl; 
+    cout << "m.at(2) = " << m.at(2) << endl; 
+    cout << "\nEnter key to search: "; 
+    int key; 
+    cin >> key; 
+    auto it = m.find(key); 
+    if (it != m.end()) 
+        cout << "Key found -> " << it->first << " : " << it->second << endl; 
+    else   cout << "Key not found!" << endl; 
+    cout << "\nDeleting key 2 and first element..." << endl; 
+    m.erase(2); 
+    m.erase(m.begin()); 
+   cout << "Map after deletion:" << endl; 
+    for (auto i : m) 
+        cout << i.first << " " << i.second << endl; 
+} 
