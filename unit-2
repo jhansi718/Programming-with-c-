@@ -1,0 +1,75 @@
+
+Develop a C++ program that demonstrates the use of the scope resolution operator and namespaces.
+
+
+Program:
+#include <iostream>
+using namespace std;
+int my_variable = 20; int main()
+{
+  int my_variable = 120; 
+  cout << "Value of global my_variable is " << ::my_variable << endl;
+  cout << "Value of local my_variable is " << my_variable << endl;
+ 
+ return 0;
+}
+
+
+
+
+
+Using namespace:
+Program:
+#include <iostream>
+int value = 100;
+namespace A {
+    int value = 20;
+    void display() {
+        std::cout << "Namespace A value: " << value << std::endl;
+    }
+}
+namespace B {
+    int value = 40;
+ 
+    void display() {
+        std::cout << "Namespace B value: " << value << std::endl;
+    }
+}
+void show() {
+    int value = 60;
+    std::cout << "Local value in show(): " << value << std::endl;
+    std::cout << "Global value accessed with scope resolution: " << ::value << std::endl;
+}
+int main() {
+    A::display();
+    B::display();
+    show();
+    return 0;
+}
+
+
+
+
+
+
+Program :
+Create a C++ program that illustrates the use of inline function
+Program :
+#include <iostream>
+using namespace std;
+inline int square(int x) {
+    return x * x;
+}
+inline int max(int a, int b) {
+    return (a > b) ? a : b;
+}
+int main() {
+    int num1 = 5, num2 = 8;
+    cout << "Square of " << num1 << " = " << square(num1) << endl;
+    cout << "Square of " << num2 << " = " << square(num2) << endl;
+    cout << "Maximum of " << num1 << " and " << num2 << " = " << max(num1, num2) << endl;
+    return 0;
+}
+
+
+
