@@ -1,0 +1,92 @@
+
+Program.No:.  
+Develop a C++ program to demonstrate the use of virtual functions to achieve 
+dynamic dispatch and enable runtime polymorphism. 
+Program: 
+#include<iostream> 
+using namespace std; 
+class shape{ 
+ public: 
+  virtual void draw(){ 
+   cout<<"Draw a generic shape"<<endl; 
+                                                                                 
+  }}; 
+  class circle:public shape{ 
+   public: 
+    void draw()override{ 
+    cout<<"Drawing a circle"<<endl; 
+    } 
+  }; 
+  class Rectangle:public shape{ 
+   public: 
+    void draw()override{ 
+    cout<<"Drawing a Rectangle"<<endl; 
+    } 
+  }; 
+  class Triangle:public shape{ 
+   public: 
+    void draw()override{ 
+    cout<<"Drawing a Triangle"<<endl; 
+    } 
+  }; 
+  int main(){ 
+   shape*shapeptr; 
+   circle c; 
+   shapeptr=&c; 
+   shapeptr->draw(); 
+    
+   Rectangle r; 
+   shapeptr=&r; 
+   shapeptr->draw(); 
+    
+   Triangle T; 
+                                                                                                      
+   shapeptr=&T; 
+   shapeptr->draw(); 
+    
+   shape s; 
+   shapeptr=&s; 
+   shapeptr->draw(); 
+   return 0; 
+  } 
+ 
+
+
+ 
+ 
+                  
+Program.No:. 
+Develop a C++ program that illustrates runtime polymorphism using virtual 
+functions. 
+Program: 
+#include <iostream> 
+using namespace std; 
+class Animal { 
+public: 
+    virtual void speak() { 
+        cout << "Animal makes a sound." << endl; 
+ 
+    } 
+}; 
+class Dog : public Animal { 
+public: 
+    void speak() override { 
+        cout << "Dog barks." << endl; 
+    } 
+}; 
+class Cat : public Animal { 
+public: 
+    void speak() override { 
+        cout << "Cat meows." << endl; 
+    } 
+}; 
+int main() { 
+    Animal* animalPtr; 
+    Dog d; 
+    Cat c; 
+    animalPtr = &d; 
+    animalPtr->speak(); 
+    animalPtr = &c; 
+    animalPtr->speak();  
+    return 0; 
+} 
